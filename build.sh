@@ -23,13 +23,12 @@ lb config \
   --distribution bookworm \
   --architectures amd64 \
   --archive-areas "main contrib non-free non-free-firmware" \
-  --mirror http://deb.debian.org/debian/ \
-  --security-mirror http://security.debian.org/ \
+  --mirror-bootstrap http://deb.debian.org/debian/ \
   --linux-packages "linux-image" \
   --bootloader grub-efi \
   --bootappend-live "boot=live components quiet splash" \
   --debian-installer none
-
+  
 echo "== Building the ISO (this downloads packages — needs network, and 20-40+ min) =="
 lb build
 
