@@ -1,0 +1,11 @@
+#!/bin/sh
+set -e
+# This is the actual mechanism behind "no bloatware": anything pulled in
+# as a dependency that runs unasked-for in the background gets masked
+# here. Add to this list as you find more — `systemctl list-unit-files
+# --state=enabled` on a test boot will show you what snuck in.
+
+for svc in avahi-daemon ModemManager cups cups-browsed bluetooth; do
+  systemctl disable "$svc" 2>/dev/null || true
+  systemctl mask "$svc" 2>/dev/null || true
+done

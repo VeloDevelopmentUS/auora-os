@@ -1,0 +1,15 @@
+#!/bin/sh
+set -e
+# One local, offline account. No Microsoft/Google-style account creation
+# or online activation anywhere in this flow — this is a plain Linux user
+# managed by PAM, same mechanism every Linux distro uses.
+#
+# CHANGE THE DEFAULT PASSWORD before distributing this image anywhere —
+# it's set to a placeholder so the ISO is usable out of the box.
+
+useradd -m -s /bin/bash -G sudo,audio,video,netdev,plugdev aura
+echo "aura:aura" | chpasswd
+
+# Ensure the skeleton wallpaper/theme settings we shipped land in the
+# new user's home too (useradd -m already copies /etc/skel).
+chown -R aura:aura /home/aura

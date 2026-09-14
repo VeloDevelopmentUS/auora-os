@@ -1,0 +1,43 @@
+name: Build Aura OS ISO
+
+# Runs on GitHub's own temporary Ubuntu machine — not your computer.
+# Trigger it by pushing to this repo, or manually from the Actions tab.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+jobs:
+  build-iso:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - name: Check out the project
+        uses: actions/checkout@v4
+
+      - name: Free up disk space on the runner
+        # Wine + Chromium + drivers + fonts is a lot of packages. GitHub's
+        # runners ship with preinstalled toolchains (Android SDK, .NET,
+        # extra compilers) we don't need — removing them buys back several
+        # GB before we even start.
+        run: |
+          sudo rm -rf /usr/local/lib/android /opt/ghc /usr/share/dotnet /opt/hostedtoolcache
+          df -h /
+
+      - name: Install live-build
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y live-build
+
+      - name: Build the ISO
+        run: sudo ./build.sh
+
+      - name: Upload the ISO
+        uses: actions/upload-artifact@v4
+        with:
+          name: aura-os-iso
+          path: aura-os.iso
+          # Compression won't help much (the ISO is already compressed
+          # internally), so skip it to save a bit of runner time.
+          compression-level: 0
+          retention-days: 14

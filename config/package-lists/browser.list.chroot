@@ -1,0 +1,8 @@
+# Real browser engine. "Aura Browser" is Chromium with a custom launcher,
+# icon, and start page — see includes.chroot/usr/share/applications and
+# usr/local/share/aura-start. Rebranding the UI chrome itself (not just the
+# launcher) requires compiling Chromium from source with a custom brand
+# — out of scope for a live-build respin; this gives you a fully working,
+# custom-skinned start experience without that.
+
+chromium

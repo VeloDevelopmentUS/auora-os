@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openbox_config xmlns="http://openbox.org/3.4/rc">
+
+  <resistance>
+    <strength>10</strength>
+    <screen_edge_strength>20</screen_edge_strength>
+  </resistance>
+
+  <focus>
+    <focusNew>yes</focusNew>
+    <followMouse>no</followMouse>
+    <focusLast>yes</focusLast>
+  </focus>
+
+  <placement>
+    <policy>Smart</policy>
+    <center>yes</center>
+  </placement>
+
+  <theme>
+    <name>Aura</name>
+    <titleLayout>NLIMC</titleLayout>
+    <keepBorder>yes</keepBorder>
+    <animateIconify>yes</animateIconify>
+    <font place="ActiveWindow">
+      <name>Noto Sans</name>
+      <size>10</size>
+      <weight>Bold</weight>
+    </font>
+  </theme>
+
+  <desktops>
+    <number>4</number>
+    <firstdesk>1</firstdesk>
+    <names>
+      <name>1</name>
+      <name>2</name>
+      <name>3</name>
+      <name>4</name>
+    </names>
+  </desktops>
+
+  <keyboard>
+    <keybind key="W-Return">
+      <action name="Execute"><command>xfce4-terminal</command></action>
+    </keybind>
+    <keybind key="W-e">
+      <action name="Execute"><command>pcmanfm</command></action>
+    </keybind>
+    <keybind key="W-b">
+      <action name="Execute"><command>aura-browser</command></action>
+    </keybind>
+    <keybind key="A-F4">
+      <action name="Close"/>
+    </keybind>
+    <keybind key="W-d">
+      <action name="ToggleShowDesktop"/>
+    </keybind>
+  </keyboard>
+
+  <mouse>
+    <context name="Titlebar">
+      <mousebind button="Left" action="Press"><action name="Focus"/><action name="Raise"/></mousebind>
+      <mousebind button="Left" action="Drag"><action name="Move"/></mousebind>
+      <mousebind button="Left" action="DoubleClick"><action name="ToggleMaximize"/></mousebind>
+    </context>
+    <context name="Frame">
+      <mousebind button="A-Left" action="Drag"><action name="Move"/></mousebind>
+    </context>
+  </mouse>
+
+  <applications>
+    <application class="*">
+      <decor>yes</decor>
+    </application>
+  </applications>
+
+</openbox_config>

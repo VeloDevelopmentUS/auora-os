@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Aura OS — Sign in</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="clock" id="clock"></div>
+
+  <div class="login-card">
+    <img class="badge" src="/usr/share/pixmaps/aura/logo.png" alt="Aura OS">
+    <div class="hello" id="hello">Welcome back</div>
+    <div class="username" id="username">—</div>
+
+    <input type="password" id="pin-input" class="pin-input"
+           placeholder="PIN or password" autofocus>
+
+    <div class="error" id="error-msg"></div>
+
+    <button id="unlock-btn" class="unlock-btn">Unlock →</button>
+  </div>
+
+  <div class="power-row">
+    <button id="restart-btn" class="power-btn">Restart</button>
+    <button id="shutdown-btn" class="power-btn">Shut Down</button>
+  </div>
+
+  <script src="theme.js"></script>
+</body>
+</html>

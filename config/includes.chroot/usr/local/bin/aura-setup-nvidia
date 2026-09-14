@@ -1,0 +1,19 @@
+#!/bin/sh
+# The open-source Nouveau driver (already installed) works out of the box
+# on Nvidia GPUs but is significantly slower for gaming/3D than Nvidia's
+# proprietary driver. The proprietary driver isn't baked into the ISO
+# itself because it needs a kernel module built (DKMS) against the exact
+# kernel you end up running, which isn't knowable at ISO build time, and
+# because of redistribution licensing — so it's a one-command step here
+# instead, run after you've booted the installed system with network access.
+
+set -e
+if ! lspci | grep -qi nvidia; then
+  echo "No Nvidia GPU detected. Nothing to do."
+  exit 0
+fi
+
+echo "Nvidia GPU detected. Installing the proprietary driver..."
+sudo apt update
+sudo apt install -y nvidia-driver firmware-misc-nonfree
+echo "Done. Reboot for it to take effect."

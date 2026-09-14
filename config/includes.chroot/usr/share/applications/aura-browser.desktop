@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Aura Browser
+Comment=Browse the web
+Exec=aura-browser
+Icon=/usr/share/pixmaps/aura/logo-64.png
+Categories=Network;WebBrowser;

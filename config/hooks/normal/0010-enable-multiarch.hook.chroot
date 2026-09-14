@@ -1,0 +1,12 @@
+#!/bin/sh
+set -e
+# Wine needs 32-bit libraries even on a 64-bit system. This must run
+# before the package-lists (specifically wine.list.chroot) get installed —
+# live-build runs config/hooks/normal/*.hook.chroot early in the chroot
+# stage, before the packages stage, which is why this is numbered to run
+# first. If your live-build version installs packages before hooks,
+# run these two lines manually inside the chroot before `lb build`
+# continues, or move them into your own earliest-numbered hook.
+
+dpkg --add-architecture i386
+apt-get update

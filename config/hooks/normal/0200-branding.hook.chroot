@@ -1,0 +1,22 @@
+#!/bin/sh
+set -e
+
+# /etc/os-release drives "About this OS" style info in various apps/tools.
+cat > /etc/os-release << 'EOF'
+NAME="Aura OS"
+PRETTY_NAME="Aura OS"
+ID=auraos
+ID_LIKE=debian
+VERSION="1.0"
+VERSION_ID="1.0"
+HOME_URL="https://example.com"
+EOF
+
+echo "Aura OS \n \l" > /etc/issue
+echo "Aura OS" > /etc/hostname
+
+# Make the Aura Plymouth theme the active one.
+update-alternatives --install /usr/share/plymouth/themes/default.plymouth \
+  default.plymouth /usr/share/plymouth/themes/aura/aura.plymouth 100
+update-alternatives --set default.plymouth /usr/share/plymouth/themes/aura/aura.plymouth
+update-initramfs -u || true

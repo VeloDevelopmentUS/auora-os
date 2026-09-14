@@ -1,0 +1,12 @@
+#!/bin/sh
+# "Aura Browser" is Chromium under the hood — a real, fully-functional
+# browser engine — opened with a custom start page and a dedicated
+# profile directory so it doesn't get mixed up with anyone using plain
+# `chromium` directly. Rebranding Chromium's actual window chrome (not
+# just what it opens to) requires a from-source rebuild; see README.
+
+exec chromium \
+  --user-data-dir="$HOME/.config/aura-browser" \
+  --class=AuraBrowser \
+  "file:///usr/local/share/aura-start/index.html" \
+  "$@"

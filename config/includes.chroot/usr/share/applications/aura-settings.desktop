@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Settings
+Comment=Appearance and system settings
+Exec=lxappearance
+Icon=preferences-desktop
+Categories=Settings;

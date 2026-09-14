@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Files
+Comment=Browse your files
+Exec=pcmanfm
+Icon=/usr/share/pixmaps/aura/logo-64.png
+Categories=System;FileManager;

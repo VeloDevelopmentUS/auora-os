@@ -1,0 +1,20 @@
+# Core desktop — window manager, panel, login manager, file manager.
+# No office suite, no games, no bundled trialware. This is the whole desktop.
+
+xserver-xorg
+xinit
+xserver-xorg-input-all
+openbox
+tint2
+lightdm
+lightdm-webkit2-greeter
+pcmanfm
+xfce4-terminal
+network-manager
+network-manager-gnome
+pulseaudio
+pavucontrol
+fonts-noto
+fonts-noto-color-emoji
+lxappearance
+picom

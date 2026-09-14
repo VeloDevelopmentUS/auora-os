@@ -1,0 +1,10 @@
+# VMware guest integration (shared clipboard, resizing, better mouse
+# sync). spice-vdagent covers QEMU/virt-manager/GNOME Boxes too, in case
+# you test outside VMware. Flatpak gives access to a huge catalog of
+# native Linux apps out of the box, on top of apt's own package archive.
+
+open-vm-tools
+open-vm-tools-desktop
+spice-vdagent
+qemu-guest-agent
+flatpak

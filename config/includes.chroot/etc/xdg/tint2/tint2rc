@@ -1,0 +1,50 @@
+# Aura OS dock — bottom-center floating bar, rounded, translucent dark.
+# tint2's own config format (not CSS) — this is the real, working config
+# syntax, trimmed to the fields that matter for this look.
+
+panel_items = LTC
+panel_size = 60% 56
+panel_margin = 0 14
+panel_padding = 10 6 10
+panel_background_id = 1
+panel_position = bottom center horizontal
+panel_layer = top
+panel_dock = 0
+wm_menu = 0
+panel_monitor = all
+
+autohide = 0
+strut_policy = follow_size
+
+# Rounded, translucent dark background
+rounded = 18
+border_width = 1
+background_color = #141018 88
+border_color = #ffffff 18
+
+# Taskbar (shows running app icons, like the dock icons in the reference)
+taskbar_mode = single_desktop
+taskbar_padding = 4 2 4
+taskbar_background_id = 0
+
+task_icon = 1
+task_text = 0
+task_centered = 1
+task_maximum_size = 44 44
+task_padding = 6 4
+
+launcher_padding = 4 2 6
+launcher_background_id = 0
+launcher_icon_size = 40
+launcher_icon_theme_override = 0
+
+launcher_item_app = /usr/share/applications/aura-files.desktop
+launcher_item_app = /usr/share/applications/aura-browser.desktop
+launcher_item_app = /usr/share/applications/aura-terminal.desktop
+launcher_item_app = /usr/share/applications/aura-settings.desktop
+
+clock_font = Noto Sans 10
+clock_rtop = 12
+clock_format1 = %H:%M
+time1_format = %H:%M
+clock_padding = 10 0

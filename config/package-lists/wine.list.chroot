@@ -1,0 +1,10 @@
+# Windows .exe / .msi compatibility via Wine. Requires 32-bit multiarch,
+# enabled in build.sh before this list installs. Realistic expectations:
+# most everyday Windows apps and many games run; anything with kernel
+# drivers, anti-cheat, or DRM (most competitive multiplayer games) will not.
+
+wine
+wine32
+wine64
+winetricks
+cabextract

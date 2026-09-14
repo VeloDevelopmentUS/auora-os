@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Aura Browser — Start</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    height: 100%;
+    font-family: "Noto Sans", sans-serif;
+    background: #0e0c14;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .card {
+    text-align: center;
+    max-width: 520px;
+    padding: 40px;
+  }
+  .badge {
+    width: 72px; height: 72px;
+    border-radius: 18px;
+    margin: 0 auto 24px;
+    display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, #7a481a, #f5a642);
+  }
+  .badge img { width: 40px; height: 40px; }
+  h1 { font-size: 30px; font-weight: 700; margin-bottom: 14px; }
+  p { color: #a8a3b3; line-height: 1.6; margin-bottom: 28px; }
+  .actions { display: flex; gap: 14px; justify-content: center; }
+  button {
+    padding: 11px 22px;
+    border-radius: 10px;
+    border: none;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  .primary { background: linear-gradient(135deg, #f5a642, #f5744a); color: #1a1208; }
+  .secondary { background: rgba(255,255,255,0.1); color: #fff; }
+  .search {
+    margin-top: 34px;
+    width: 100%;
+    padding: 13px 18px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.06);
+    color: #fff;
+    font-size: 14px;
+    outline: none;
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="badge"><img src="/usr/share/pixmaps/aura/logo-64.png" alt=""></div>
+    <h1>Welcome to Aura Browser</h1>
+    <p>Fast, private browsing with no bundled toolbars, trial software,
+       or sponsored tiles you didn't ask for.</p>
+    <div class="actions">
+      <button class="primary" onclick="location.href='chrome://extensions'">Explore Extensions</button>
+      <button class="secondary" onclick="location.href='chrome://bookmarks'">View Bookmarks</button>
+    </div>
+    <input class="search" id="search" placeholder="Search the web or type a URL" autofocus>
+  </div>
+  <script>
+    document.getElementById('search').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') {
+        var q = e.target.value.trim();
+        if (!q) return;
+        var looksLikeUrl = /^https?:\/\//.test(q) || (/\.[a-z]{2,}$/i.test(q) && !q.includes(' '));
+        location.href = looksLikeUrl
+          ? (q.startsWith('http') ? q : 'https://' + q)
+          : 'https://duckduckgo.com/?q=' + encodeURIComponent(q);
+      }
+    });
+  </script>
+</body>
+</html>

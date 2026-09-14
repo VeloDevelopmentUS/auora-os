@@ -1,0 +1,58 @@
+// Aura OS boot splash. Plymouth's own tiny scripting language (not JS) —
+// this is the same mechanism that draws every distro's boot screen; only
+// the theme differs.
+
+Window.SetBackgroundTopColor(0.08, 0.06, 0.14);
+Window.SetBackgroundBottomColor(0.03, 0.02, 0.06);
+
+logo.image = Image("logo.png");
+logo.sprite = Sprite(logo.image);
+
+screen_w = Window.GetWidth();
+screen_h = Window.GetHeight();
+logo_w = logo.image.GetWidth();
+logo_h = logo.image.GetHeight();
+
+logo.sprite.SetX(screen_w / 2 - logo_w / 2);
+logo.sprite.SetY(screen_h / 2 - logo_h / 2);
+
+// Pulsing glow/opacity so the badge breathes gently instead of sitting static
+global.angle = 0;
+
+fun refresh_callback() {
+    global.angle += 0.05;
+    opacity = 0.65 + 0.35 * Math.Sin(global.angle);
+    logo.sprite.SetOpacity(opacity);
+}
+
+Plymouth.SetRefreshFunction(refresh_callback);
+
+// Thin progress dots underneath the badge, filling left to right with boot progress
+dot_count = 24;
+dot_spacing = 10;
+dots = list();
+i = 0;
+while (i < dot_count) {
+    d = Image.Text(".", 1, 1, 1, 1, "Sans 14");
+    d.sprite = Sprite(d);
+    d.sprite.SetX(screen_w / 2 - (dot_count * dot_spacing) / 2 + i * dot_spacing);
+    d.sprite.SetY(screen_h / 2 + logo_h / 2 + 40);
+    d.sprite.SetOpacity(0.15);
+    dots[i] = d;
+    i++;
+}
+
+fun progress_callback(duration, progress) {
+    lit = Math.Int(progress * dot_count);
+    j = 0;
+    while (j < dot_count) {
+        if (j < lit) {
+            dots[j].sprite.SetOpacity(0.9);
+        } else {
+            dots[j].sprite.SetOpacity(0.15);
+        }
+        j++;
+    }
+}
+
+Plymouth.SetBootProgressFunction(progress_callback);

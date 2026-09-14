@@ -1,0 +1,24 @@
+#!/bin/sh
+# Runs once per login session, after openbox starts, before you see the desktop.
+
+# Wallpaper
+pcmanfm --wallpaper-mode=stretch --set-wallpaper=/usr/share/backgrounds/aura-wallpaper.png &
+
+# Desktop icons layer (Files, Terminal, Browser — matches ~/Desktop contents)
+pcmanfm --desktop &
+
+# Compositor: gives windows real transparency/blur so the glass look in
+# the CSS-based apps (browser start page, login screen) is matched by
+# native windows too.
+picom --config /etc/xdg/picom.conf &
+
+# Dock / top bar
+tint2 -c /etc/xdg/tint2/tint2rc &
+
+# Network tray applet
+nm-applet &
+
+# VM guest integration, if running under VMware
+if [ -x /usr/bin/vmtoolsd ]; then
+  vmware-user-suid-wrapper &
+fi
