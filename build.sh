@@ -24,7 +24,7 @@ lb config \
   --architectures amd64 \
   --archive-areas "main contrib non-free non-free-firmware" \
   --linux-packages "linux-image" \
-  --bootloaders grub-efi \
+  --bootloader grub-efi \
   --bootappend-live "boot=live components quiet splash" \
   --debian-installer none
 
