@@ -11,7 +11,7 @@ fi
 
 if ! command -v lb >/dev/null 2>&1; then
   echo "live-build isn't installed. Run:"
-  echo "  sudo apt update && sudo apt install -y live-build"
+  echo "  sudo apt update && sudo apt install -y live-build debootstrap debian-archive-keyring"
   exit 1
 fi
 
@@ -23,6 +23,8 @@ lb config \
   --distribution bookworm \
   --architectures amd64 \
   --archive-areas "main contrib non-free non-free-firmware" \
+  --mirror http://deb.debian.org/debian/ \
+  --security-mirror http://security.debian.org/ \
   --linux-packages "linux-image" \
   --bootloader grub-efi \
   --bootappend-live "boot=live components quiet splash" \
